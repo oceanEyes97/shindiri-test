@@ -2,6 +2,34 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+> 💡 **Note**  
+> This project uses [`pnpm`](https://pnpm.io/) as the default package manager. Make sure you have it installed globally:
+> ```bash
+> npm install -g pnpm
+> ```
+
+## Getting Started
+
+After cloning the repository, install dependencies and start the development server:
+
+```bash
+pnpm install
+pnpm dev
+
+# Environment Variables .env.local 
+
+The project is setup with .env.local file and in order for the application to work you must add them your self.The file contains the variable names, you just have to add yours to the file.
+
+Variables list:
+
+VITE_FIREBASE_API_KEY=''
+VITE_FIREBASE_AUTH_DOMAIN=''
+VITE_FIREBASE_PROJECT_ID=''
+VITE_FIREBASE_STORAGE_BUCKET=''
+VITE_FIREBASE_MESSAGING_SENDER_ID=''
+VITE_FIREBASE_APP_ID=''
+VITE_FIREBASE_MEASUREMENT_ID=''
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
