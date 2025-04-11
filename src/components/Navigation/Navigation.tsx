@@ -1,51 +1,48 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { signOut } from "firebase/auth";
-import { auth } from "../../../firebase/config";
-import Logo from "../../../public/Logo/Rick_and_Morty.svg";
-import { MdArrowForward, MdMenu, MdClose } from "react-icons/md";
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../../firebase/config';
+import Logo from '../../../public/Logo/Rick_and_Morty.svg';
+import { MdArrowForward, MdMenu, MdClose } from 'react-icons/md';
 
 const Navigation = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  //Sign out the user when he clicks Logout
   const handleSignOut = async () => {
     await signOut(auth);
-    sessionStorage.clear();
-    localStorage.removeItem("token");
-    navigate("/");
+    localStorage.removeItem('token');
+    navigate('/');
   };
 
   return (
-    <nav className="relative bg-black text-white shadow-md px-4 py-3">
-      <div className="mx-auto flex max-w-screen-xl items-center justify-between relative">
+    <nav className="relative bg-black px-4 py-3 text-white shadow-md shadow-green-500">
+      <div className="relative mx-auto flex max-w-screen-xl items-center justify-between">
         {/* Logo */}
-        <Link to="/characters" className="flex items-center gap-3 z-10">
+        <Link to="/characters" className="z-10 flex items-center gap-3">
           <img src={Logo} alt="Logo" className="h-10 w-auto" />
         </Link>
 
         {/* Centered Nav Link */}
-        <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 transform md:flex gap-6">
-          <Link
-            to="/characters"
-            className="hover:text-green-400 transition duration-200"
-          >
+        <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 transform gap-6 md:flex">
+          <Link to="/characters" className="transition duration-200 hover:text-green-400">
             Characters
           </Link>
         </div>
 
         {/* Logout + Mobile Toggle */}
-        <div className="flex items-center gap-2 z-10">
+        <div className="z-10 flex items-center gap-2">
           <button
             onClick={handleSignOut}
-            className="hidden md:flex items-center gap-1 rounded-md bg-green-400 px-4 py-2 font-semibold text-black hover:bg-green-500 transition"
+            className="hidden items-center gap-1 rounded-md bg-green-400 px-4 py-2 font-semibold text-black transition hover:bg-green-500 md:flex"
           >
             Logout <MdArrowForward />
           </button>
 
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-green-400 text-3xl"
+            className="text-3xl text-green-400 md:hidden"
           >
             {isMenuOpen ? <MdClose /> : <MdMenu />}
           </button>
@@ -54,7 +51,7 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="mt-3 flex flex-col gap-4 md:hidden text-center">
+        <div className="mt-3 flex flex-col gap-4 text-center md:hidden">
           <Link
             to="/characters"
             onClick={() => setIsMenuOpen(false)}
@@ -67,7 +64,7 @@ const Navigation = () => {
               setIsMenuOpen(false);
               handleSignOut();
             }}
-            className="mx-auto mt-1 flex items-center justify-center gap-1 rounded-md bg-green-400 px-4 py-2 font-semibold text-black hover:bg-green-500 transition"
+            className="mx-auto mt-1 flex items-center justify-center gap-1 rounded-md bg-green-400 px-4 py-2 font-semibold text-black transition hover:bg-green-500"
           >
             Logout <MdArrowForward />
           </button>

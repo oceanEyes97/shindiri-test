@@ -1,6 +1,5 @@
-import EpisodeDetailsComopnent from "../components/Episode/EpisodeDetailsComponent";
+import EpisodeDetailsComopnent from '../components/Episode/EpisodeDetailsComponent';
 
-export default function SingelEpisodePage()
-{
-    return <EpisodeDetailsComopnent/>
+export default function SingelEpisodePage() {
+  return <EpisodeDetailsComopnent />;
 }

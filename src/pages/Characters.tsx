@@ -1,6 +1,5 @@
-import CharactersComopnent from "../components/Characters/CharactersComponent";
+import CharactersComopnent from '../components/Characters/CharactersComponent';
 
-export default function CharactersPage(){
-    return <CharactersComopnent/>
+export default function CharactersPage() {
+  return <CharactersComopnent />;
 }
-  

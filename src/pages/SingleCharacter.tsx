@@ -1,5 +1,5 @@
-import CharacterDetailsComopnent from "../components/Characters/CharacterDetailsComponent";
+import CharacterDetailsComopnent from '../components/Characters/CharacterDetailsComponent';
 
-export default function SingleCharacterPage(){
-    return <CharacterDetailsComopnent/>
+export default function SingleCharacterPage() {
+  return <CharacterDetailsComopnent />;
 }

@@ -1,6 +1,5 @@
-import ResetPasswordComponent from "../components/Auth/ResetPassswordForm";
+import ResetPasswordComponent from '../components/Auth/ResetPassswordForm';
 
-export default function ResetPassword()
-{
-    return <ResetPasswordComponent/>
+export default function ResetPassword() {
+  return <ResetPasswordComponent />;
 }
