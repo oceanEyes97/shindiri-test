@@ -1,12 +1,12 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "../pages/Login";
-import SignUpComponent from "../pages/SignUp"
-import ResetPasswordComponent from "../pages/ResetPassword";
-import CharactersPage from "../pages/Characters";
-import SingleCharacter from "../pages/SingleCharacter";
-import SingleLocation from "../pages/SingleLocation";
-import SingleEpisode from "../pages/SingelEpisode"
-import PrivateRoute from "./PrivateRoute";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Login from '../pages/Login';
+import SignUpComponent from '../pages/SignUp';
+import ResetPasswordComponent from '../pages/ResetPassword';
+import CharactersPage from '../pages/Characters';
+import SingleCharacter from '../pages/SingleCharacter';
+import SingleLocation from '../pages/SingleLocation';
+import SingleEpisode from '../pages/SingelEpisode';
+import PrivateRoute from './PrivateRoute';
 
 const AppRoutes = () => {
   return (

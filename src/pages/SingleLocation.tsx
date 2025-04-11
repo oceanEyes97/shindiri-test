@@ -1,6 +1,5 @@
-import LocationDetailsComopnent from "../components/Location/LocationDetailsComponent";
+import LocationDetailsComopnent from '../components/Location/LocationDetailsComponent';
 
-export default function SingleLocationPage()
-{
-    return <LocationDetailsComopnent/>
+export default function SingleLocationPage() {
+  return <LocationDetailsComopnent />;
 }
