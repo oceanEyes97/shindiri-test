@@ -63,7 +63,7 @@ export default function LocationDetailsComponent() {
 
         {(residents ?? []).map((character: Character) => (
           <Link key={character.id} to={`/characters/${character.id}`} className="block">
-            <div className="rounded-xl bg-gray-900 shadow-lg cursor-pointer hover:scale-105 hover:shadow-green-400/50 transition-transform duration-200 overflow-hidden">
+            <div className="rounded-xl bg-gray-900 shadow-lg cursor-pointer hover:scale-105 hover:shadow-green-400/50 transition-transform duration-200 overflow-hidden flex flex-col h-96">
               <div className="h-60 w-full overflow-hidden">
                 <img
                   src={character.image}
