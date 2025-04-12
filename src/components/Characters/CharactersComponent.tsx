@@ -40,14 +40,33 @@ export default function CharactersComponent() {
     setPage(1);
   }, [query]);
 
-  // Ellipsis pagination logic
+  /*
+      Ellipsis pagination logic.
+      This function creates a mixed array of numbers and strings ('...)
+      to be mapped over for pagination, and returns the mixed array 
+      of type number and '...' .
+      Example of the return:
+      [1, '...', 3, 4, 5, 6, 7, '...', 42]
+
+  */
   const getPaginationRange = (
     current: number,
     total: number,
     delta: number = 2
   ): (number | '...')[] => {
+    //Initialize range array
     const range: (number | '...')[] = [];
-
+    /*
+    Left returns the max number of two passed numbers.
+    Example, if current page is 1 left will return 2. 
+    If current page is 5 it will return 3.
+  
+    */
+    /*
+    Right returns the min number of two passed numbers.
+    Example, if total is 41 ,right will return current + delta. 
+    If current page + delta is greater than 41 it will return 41.
+    */
     const left = Math.max(2, current - delta);
     const right = Math.min(total - 1, current + delta);
 
@@ -60,6 +79,8 @@ export default function CharactersComponent() {
     }
 
     // Main range
+    // If current page is 1 that means the lopp starts at 2 and ends at 3
+    // If current page is 5, the loop starts at 3 ends at 7
     for (let i = left; i <= right; i++) {
       range.push(i);
     }
@@ -80,6 +101,50 @@ export default function CharactersComponent() {
   if (isLoading || !data) return <LoadingState />;
   if (isError) return <p className="text-center text-red-500">Error fetching characters.</p>;
 
+  /*
+  Destuctiring charachter data into results and info.
+  The API based on the request and query knows what to return.
+  Info array contains the total pages number of characters.
+  By default the API returns 20 charecters per page.
+  Example of the request:
+  https://rickandmortyapi.com/api/character/?page=19
+
+  Returns:
+
+ {
+  "info": {
+    "count": 826,
+    "pages": 42,
+    "next": "https://rickandmortyapi.com/api/character/?page=20",
+    "prev": "https://rickandmortyapi.com/api/character/?page=18"
+  },
+  "results": [
+    {
+      "id": 361,
+      "name": "Toxic Rick",
+      "status": "Dead",
+      "species": "Humanoid",
+      "type": "Rick's Toxic Side",
+      "gender": "Male",
+      "origin": {
+        "name": "Alien Spa",
+        "url": "https://rickandmortyapi.com/api/location/64"
+      },
+      "location": {
+        "name": "Earth",
+        "url": "https://rickandmortyapi.com/api/location/20"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/361.jpeg",
+      "episode": [
+        "https://rickandmortyapi.com/api/episode/27"
+      ],
+      "url": "https://rickandmortyapi.com/api/character/361",
+      "created": "2018-01-10T18:20:41.703Z"
+    },
+    // ...
+  ]
+}
+  */
   const { results, info } = data;
   const totalPages = info.pages;
 
@@ -137,6 +202,7 @@ export default function CharactersComponent() {
 
       {/* Pagination */}
       <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
+        {/*Changing the page tells React Query to get new reults. */}
         <Button
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
           disabled={page === 1}
@@ -156,7 +222,7 @@ export default function CharactersComponent() {
           ) : (
             <Button
               key={`page-${pageNum}`}
-              onClick={() => setPage(pageNum)} // ✅ This is safe now
+              onClick={() => setPage(pageNum)}
               className={`${
                 pageNum === page ? 'bg-green-500 font-bold text-black' : 'bg-gray-900 text-white'
               } hover:bg-green-400`}
