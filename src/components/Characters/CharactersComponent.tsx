@@ -202,6 +202,7 @@ export default function CharactersComponent() {
 
       {/* Pagination */}
       <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
+        {/*Changing the page tells React Query to get new reults. */}
         <Button
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
           disabled={page === 1}
