@@ -23,7 +23,7 @@ export default function EpisodeDetailsComponent() {
   /*
 Destructiring data and setting up React Queries for episode and characters relatied to it.
 We first get the episode which has a characters array with urls related to the episode.
-After that the second quiery 'eouside-characters' runs by calling the query funcion and passing the episode character data. 
+After that the second quiery 'episode-characters' runs by calling the query funcion and passing the episode character data. 
 The character fetch then maps over all the URLs and splits them accordingly to get the last part of the url in the iteration (/:id) then adds it to the new returned array. So that we get an array with all the id's of the characters to be mapped over in the UI. The enabled option makes sure that the queries only run if the id exists and the episode characters exist.
 */
   const {

@@ -1,9 +1,5 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import {
-  getAuth,
-  setPersistence,
-  browserLocalPersistence,
-} from 'firebase/auth';
+import { getAuth, setPersistence, browserLocalPersistence } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -15,19 +11,18 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
 const auth = getAuth(app);
 
-// Optional: Set auth persistence to local
+// Set auth persistence to local
 setPersistence(auth, browserLocalPersistence)
   .then(() => {
     console.log('Persistence set to browserLocalPersistence');
   })
   .catch((error) => {
     console.error('Error setting persistence:', error);
- });
+  });
 
 // Exports
 export const initFirebase = () => app;
