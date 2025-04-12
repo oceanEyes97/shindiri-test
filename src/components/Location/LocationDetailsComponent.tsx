@@ -20,7 +20,12 @@ export default function LocationDetailsComponent() {
     const response = await axios.get(`https://rickandmortyapi.com/api/character/${ids}`);
     return Array.isArray(response.data) ? response.data : [response.data];
   };
-
+  /*
+Destructiring data and setting up React Queries for location and residents relatied to it.
+We first get the location which has a residents array with urls related to the location.
+After that the second quiery 'location-characters' runs by calling the query funcion and passing the location resident data. 
+The character fetch then maps over all the URLs and splits them accordingly to get the last part of the url in the iteration (/:id) then adds it to the new returned array. So that we get an array with all the id's of the residents to be mapped over in the UI. The enabled option makes sure that the queries only run if the id exists and the location residents exist.
+*/
   const {
     data: location,
     isLoading: isLocationLoading,
@@ -64,7 +69,7 @@ export default function LocationDetailsComponent() {
         {residents?.length === 0 && (
           <p className="col-span-full text-center text-gray-300">No residents found.</p>
         )}
-
+        {/*If residents is null or undefined, use an empty array ([]) instead.  */}
         {(residents ?? []).map((character: Character) => (
           <Link key={character.id} to={`/characters/${character.id}`} className="block">
             <div className="flex h-96 cursor-pointer flex-col overflow-hidden rounded-xl bg-gray-900 shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-green-400/50">
